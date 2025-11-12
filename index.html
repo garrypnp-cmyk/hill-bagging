@@ -1,0 +1,58 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HillBagger - Ready-to-deploy build</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+  <style>
+    /* Minimal styling */
+    body { margin:0; font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial; display:flex; height:100vh; }
+    #sidebar { width:420px; max-width:45%; min-width:320px; border-right:1px solid #eee; padding:12px; box-sizing:border-box; overflow:auto; }
+    #map { flex:1; height:100%; }
+    .hill { padding:6px; border-bottom:1px solid #f0f0f0; display:flex; justify-content:space-between; align-items:center; }
+    .controls { display:flex; gap:8px; margin-bottom:8px; }
+    button { padding:6px 10px; border-radius:6px; border:1px solid #ccc; background:white; cursor:pointer; }
+    input, select { padding:6px; border-radius:6px; border:1px solid #ccc; }
+    .bagged { color: green; font-weight:700; }
+    header h1 { margin:0; font-size:18px; }
+    .stats { margin-top:8px; font-size:14px; color:#333; }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <header>
+      <h1>HillBagger (Static Build)</h1>
+      <div class="controls">
+        <input id="search" placeholder="Search hills..." />
+        <select id="regionSelect"><option value="">All regions</option></select>
+        <button id="exportGpx">Export GPX</button>
+        <button id="importJson">Import</button>
+        <button id="exportJson">Export</button>
+      </div>
+      <div class="controls">
+        <button id="signInBtn">Sign in (Google)</button>
+        <button id="syncBtn">Sync (Firestore)</button>
+      </div>
+      <div class="stats" id="stats">Loading…</div>
+    </header>
+    <div id="list"></div>
+  </div>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+  <!-- Firebase SDKs (modular) -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+
+  <script src="app.js"></script>
+</body>
+</html>
